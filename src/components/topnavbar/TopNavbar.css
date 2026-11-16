@@ -1,0 +1,138 @@
+/* =========================================
+   TOP NAVBAR STYLES (VARIABLE-DRIVEN)
+   ========================================= */
+
+.top-nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+/* Top Row */
+.top-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* --- LEFT SIDE (Weather & Date) --- */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.weather-info, .date-info { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.weather-icon-wrapper { position: relative; font-size: 24px; }
+.weather-sun { color: #f59e0b; }
+.weather-cloud { color: #94a3b8; position: absolute; bottom: -2px; right: -4px; font-size: 18px; }
+
+.info-icon { font-size: 22px; color: var(--text-muted); }
+
+/* FORCED VARIABLE COLOR FOR TEXT */
+.info-main { 
+  font-size: 13px; 
+  font-weight: 600; 
+  margin: 0; 
+  color: var(--text-main) !important; 
+}
+
+.info-sub { 
+  font-size: 11px; 
+  color: var(--text-muted) !important; 
+  margin: 2px 0 0 0; 
+}
+
+/* Changed to a brighter green so it's visible in dark mode */
+.text-green { color: #22c55e !important; }
+
+/* --- RIGHT SIDE (Notifications & User) --- */
+.header-right { 
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
+}
+
+.notification-icon { 
+  position: relative; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  padding: 0 12px; 
+  border-left: 1px solid var(--border-color); 
+  border-right: 1px solid var(--border-color); 
+}
+
+/* Using variable for the bell icon */
+.notification-icon svg {
+  color: var(--text-main); 
+}
+
+.badge { 
+  position: absolute; 
+  top: -4px; 
+  right: 4px; 
+  background-color: #ef4444; 
+  color: white; 
+  font-size: 9px; 
+  font-weight: bold; 
+  padding: 2px 5px; 
+  border-radius: 50%; 
+}
+
+.system-status { display: flex; align-items: center; gap: 8px; }
+.status-dot { width: 10px; height: 10px; background-color: #22c55e; border-radius: 50%; }
+
+.user-profile { display: flex; align-items: center; gap: 10px; }
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background-color: var(--bg-panel);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.avatar img {
+  display: block;
+}
+
+/* Page Title Row */
+.page-title-row h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main) !important;
+  margin: 0 0 4px 0;
+}
+.page-title-row p {
+  font-size: 14px;
+  color: var(--text-muted) !important;
+  margin: 0;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 900px) {
+  .top-nav-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-right {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+  }
+}

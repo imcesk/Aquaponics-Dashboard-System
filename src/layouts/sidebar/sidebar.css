@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #0b1f16; /* Original dark green */
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  flex-shrink: 0;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Brand Header */
+.brand {
+  display: flex;
+  align-items: center;
+  padding: 24px 20px;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  background: #ffffff; /* CHANGED TO WHITE */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.brand-text h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.brand-text p {
+  font-size: 11px;
+  color: #a3b8af;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: #a3b8af;
+  cursor: pointer;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.toggle-btn:hover {
+  color: white;
+}
+
+/* Main Navigation */
+.nav-menu {
+  flex: 1;
+  padding: 0 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.nav-menu::-webkit-scrollbar { width: 5px; }
+.nav-menu::-webkit-scrollbar-track { background: transparent; }
+.nav-menu::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+
+.nav-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  margin: 32px 0 12px 12px; /* The 32px top margin creates the gap */
+  text-transform: uppercase;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+  background-color: rgba(46, 125, 50, 0.6); 
+  color: white;
+}
+
+.nav-icon {
+  font-size: 20px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  color: #a3b8af;
+}
+
+.nav-item.active .nav-icon {
+  color: white;
+}
+
+.nav-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #d1d5db;
+}
+
+.nav-item.active .nav-text {
+  color: white;
+  font-weight: 600;
+}
+
+/* Bottom Decorative Section */
+.sidebar-bottom {
+  position: relative;
+  height: 250px; /* Increased height to fill the bottom better */
+  width: 100%; /* Full width */
+  margin: 0; /* Removed margin */
+  border-radius: 0; /* Removed border radius */
+  overflow: hidden;
+  /* The gradient starts fading from the dark green (#0b1f16) at the top to transparent/dark at the bottom */
+  background: linear-gradient(to bottom, #0b1f16 0%, rgba(11, 31, 22, 0.7) 40%, rgba(11, 31, 22, 0.8) 100%), url('/sidebar-bg.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  margin-top: auto; /* Pushes it to the very bottom */
+}
+
+/* NEW: Image Layer with Opacity and Fade */
+.sidebar-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/sidebar-bg.png');
+  background-size: cover;
+  background-position: center;
+  
+  /* --- ADJUST OPACITY HERE --- */
+  opacity: .6; 
+  
+  /* Fades the top of the image into the dark green sidebar background */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+  
+  z-index: 1;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: white; 
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+  padding: 24px; /* Added padding for the text */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8); 
+  font-weight: 500;
+}
+
+/* --- Collapsed State Adjustments --- */
+.sidebar.collapsed .toggle-btn {
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.sidebar.collapsed .nav-item {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.sidebar.collapsed .nav-icon {
+  margin-right: 0;
+}
+
+.sidebar.collapsed .brand {
+  justify-content: center;
+  padding: 24px 0;
+}
+
+/* Tooltip on hover when collapsed */
+.sidebar.collapsed .nav-item:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 70px;
+  background-color: #1f2937;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* RESPONSIVE: Auto-collapse sidebar on smaller screens */
+@media (max-width: 1024px) {
+  .sidebar:not(.collapsed) {
+    width: 80px;
+  }
+  .sidebar:not(.collapsed) .brand-text,
+  .sidebar:not(.collapsed) .nav-text,
+  .sidebar:not(.collapsed) .sidebar-bottom {
+    display: none;
+  }
+  .sidebar:not(.collapsed) .brand,
+  .sidebar:not(.collapsed) .toggle-btn,
+  .sidebar:not(.collapsed) .nav-item {
+    justify-content: center;
+    padding: 12px 0;
+  }
+  .sidebar:not(.collapsed) .nav-icon {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,23 @@
+:root {
+  /* Default Light Mode Colors */
+  --bg-app: #f8fafc;
+  --bg-panel: #ffffff;
+  --bg-hover: #f1f5f9; 
+  --text-main: #111827;
+  --text-muted: #64748b;
+  --border-color: #e5e7eb;
+  
+  /* Default Primary Color & Font */
+  --primary-color: #15803d;
+  --primary-light: #dcfce7;
+  --font-base: 16px;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-size: var(--font-base);
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}

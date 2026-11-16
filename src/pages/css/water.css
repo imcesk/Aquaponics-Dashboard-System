@@ -1,0 +1,483 @@
+/* =========================================
+   WATER MANAGEMENT STYLES (VARIABLE-DRIVEN)
+   ========================================= */
+
+.water-management-container {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  width: 100%;
+}
+
+/* =========================================
+   SECTION 1: TOP STATUS CARDS
+   ========================================= */
+.wm-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.wm-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  min-width: 0;
+}
+
+.wm-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wm-card-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.wm-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 4px 0;
+}
+
+.wm-card-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+}
+
+.wm-card-value span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.wm-badge-wrapper {
+  margin-top: auto;
+}
+
+.wm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* =========================================
+   SECTION 2: MIDDLE GRID
+   ========================================= */
+.wm-middle-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* --- LEFT: CHART PANEL --- */
+.wm-chart-panel {
+  padding: 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wm-tabs {
+  display: flex;
+  background: var(--bg-hover);
+  border-radius: 6px;
+  padding: 4px;
+}
+.wm-tabs button {
+  border: none;
+  background: transparent;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.wm-tabs button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.wm-chart-container {
+  display: flex;
+  height: 220px;
+  margin-top: 24px;
+}
+
+.wm-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  width: 40px;
+  padding-bottom: 25px;
+}
+
+.wm-chart-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wm-grid-lines {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 25px;
+}
+.wm-grid-lines div {
+  border-top: 1px dashed var(--border-color);
+  width: 100%;
+}
+
+.wm-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: calc(100% - 25px);
+  overflow: visible;
+}
+
+.wm-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border: 2px solid var(--bg-panel);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.wm-x-axis {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  padding-top: 8px;
+}
+
+/* --- RIGHT: WATER CONTROL PANEL --- */
+.wm-control-panel {
+  padding: 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.wm-control-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.wm-control-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+.wm-control-item.border-bottom {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.wm-control-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wm-control-info {
+  flex: 1;
+}
+
+.wm-control-info strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.wm-control-info p {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Toggles */
+.wm-toggle {
+  width: 44px;
+  height: 24px;
+  background: var(--border-color);
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+.wm-toggle.active {
+  background: var(--primary-color);
+}
+.wm-toggle .knob {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+.wm-toggle.active .knob {
+  left: 22px;
+}
+
+/* Custom Dropdown */
+.wm-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.wm-select {
+  appearance: none;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px 28px 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+}
+.wm-select-icon {
+  position: absolute;
+  right: 4px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* =========================================
+   SECTION 3: BOTTOM GRID (Schedule & Alerts)
+   ========================================= */
+.wm-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 16px;
+}
+
+/* --- LEFT: WATERING SCHEDULE --- */
+.wm-schedule-panel {
+  padding: 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-edit-schedule {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-hover);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-edit-schedule:hover { background: var(--primary-light); }
+
+.wm-schedule-content {
+  display: flex;
+  align-items: center;
+  background: var(--primary-light);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wm-schedule-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  z-index: 2;
+}
+
+.wm-clock-icon {
+  width: 48px; height: 48px;
+  background: var(--bg-panel);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.wm-schedule-label {
+  font-size: 11px; color: var(--text-muted); font-weight: 600; margin: 0 0 4px 0;
+}
+
+.wm-schedule-time {
+  font-size: 22px; font-weight: 800; color: var(--text-main); margin: 0 0 2px 0; line-height: 1;
+}
+
+.wm-schedule-date {
+  font-size: 11px; color: var(--text-muted); margin: 0;
+}
+
+.wm-schedule-divider {
+  width: 1px; height: 60px; background: var(--border-color); margin: 0 32px; z-index: 2;
+}
+
+.wm-schedule-right {
+  display: flex; align-items: center; gap: 12px; z-index: 2;
+}
+
+.wm-repeat-icon {
+  width: 36px; height: 36px;
+  background: var(--bg-panel);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.wm-schedule-bg-leaf {
+  position: absolute;
+  right: 0; bottom: -10px;
+  width: 160px; height: 120px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/7658/7658354.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+/* --- RIGHT: ALERTS --- */
+.wm-alerts-panel {
+  padding: 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wm-alert-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--primary-light);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+.wm-alert-icon {
+  width: 56px; height: 56px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.wm-alert-content h4 {
+  font-size: 14px; font-weight: 700; color: var(--text-main); margin: 0 0 4px 0; z-index: 2; position: relative;
+}
+
+.wm-alert-content p {
+  font-size: 11px; color: var(--text-muted); margin: 0; z-index: 2; position: relative;
+}
+
+.wm-alert-bg-leaf {
+  position: absolute;
+  right: 0; bottom: -10px;
+  width: 120px; height: 100px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/7658/7658354.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+/* Modal Specifics */
+.modal-input {
+  padding: 10px 12px; 
+  border: 1px solid var(--border-color); 
+  border-radius: 6px; 
+  font-size: 13px; 
+  color: var(--text-main); 
+  background: var(--bg-panel);
+  outline: none;
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+@media (max-width: 1200px) {
+  .wm-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .wm-middle-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1024px) {
+  .wm-bottom-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .wm-cards-grid { grid-template-columns: 1fr; }
+}

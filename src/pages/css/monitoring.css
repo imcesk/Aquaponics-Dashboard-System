@@ -1,0 +1,243 @@
+.monitoring-container {
+  font-family: 'Inter', sans-serif;
+  color: #1f2937;
+  width: 100%;
+}
+
+/* =========================================
+   SECTION 1: TOP INFO PANELS (3 Columns)
+   ========================================= */
+.monitoring-top-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr; 
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.info-panel {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.info-panel .panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.info-panel .panel-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* 1. Operating Mode */
+.operating-modes-row { display: flex; gap: 12px; flex: 1; }
+.mode-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 8px; cursor: pointer; transition: all 0.2s ease; }
+.mode-btn:hover { border-color: #cbd5e1; background: #f8fafc; }
+.mode-icon { color: #475569; background: #f1f5f9; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.mode-text { text-align: center; }
+.mode-text strong { display: block; font-size: 12px; color: #1e293b; margin-bottom: 2px; }
+.mode-text span { font-size: 9px; color: #64748b; }
+.mode-btn.active { background: #0f5132; border-color: #0f5132; box-shadow: 0 4px 6px rgba(15, 81, 50, 0.2); }
+.mode-btn.active .mode-icon { background: rgba(255, 255, 255, 0.1); color: #4ade80; }
+.mode-btn.active .mode-text strong { color: white; }
+.mode-btn.active .mode-text span { color: #86efac; }
+
+/* 2. Plant Growth Stage */
+.plant-stage-panel { background: #f0fdf4; border-color: #dcfce7; }
+.plant-stage-content { display: flex; align-items: center; gap: 16px; flex: 1; }
+.plant-stage-img { width: 80px; height: 80px; background: #dcfce7; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.plant-stage-img img { width: 60px; height: 60px; object-fit: contain; }
+.stage-title-row { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
+.stage-title-row h4 { font-size: 18px; font-weight: 700; color: #111827; margin: 0; }
+.plant-stage-info p { font-size: 11px; color: #4b5563; margin: 0; }
+
+/* 3. Lighting Status */
+.lighting-status-content { display: flex; align-items: center; justify-content: space-between; background: transparent; border: none; padding: 0 8px; flex: 1; }
+.light-status-left { display: flex; flex-direction: column; gap: 12px; }
+.status-pill { display: inline-flex; align-items: center; gap: 6px; background: #dcfce7; color: #15803d; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; align-self: flex-start; }
+.status-pill .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
+.intensity-display h2 { font-size: 28px; font-weight: 700; color: #111827; margin: 0; line-height: 1; }
+.intensity-display span { font-size: 11px; color: #64748b; font-weight: 600; }
+.light-status-divider { width: 1px; height: 60px; background: #e2e8f0; }
+.light-status-right { display: flex; flex-direction: column; justify-content: center; }
+.next-change-label { font-size: 11px; color: #64748b; font-weight: 600; margin: 0 0 4px 0; }
+.next-change-time { display: flex; align-items: center; gap: 6px; color: #111827; margin-bottom: 4px; }
+.next-change-time h4 { font-size: 16px; font-weight: 700; margin: 0; }
+.next-change-target { font-size: 12px; color: #22c55e; font-weight: 600; margin: 0; }
+
+
+/* =========================================
+   BOTTOM LAYOUT (Sections 2-3 left | Devices right)
+   ========================================= */
+.monitoring-bottom-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Left expands, right is 320px wide */
+  gap: 24px;
+  align-items: stretch;
+}
+
+.monitoring-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* =========================================
+   SECTION 2: MIDDLE GRID (Chart + Preview)
+   ========================================= */
+.monitoring-middle-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.chart-panel { padding: 16px; background: white; border: 1px solid #e5e7eb; border-radius: 12px; display: flex; flex-direction: column; }
+.chart-panel .panel-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.chart-panel .panel-title { display: flex; align-items: center; gap: 8px; color: #111827; }
+.chart-panel .panel-title h3 { font-size: 15px; font-weight: 600; margin: 0; }
+.badge-auto { background: #dcfce7; color: #15803d; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 12px; display: flex; align-items: center; gap: 4px; }
+.schedule-chart-container { display: flex; height: 220px; width: 100%; padding-bottom: 24px; }
+.y-axis-labels { display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #94a3b8; width: 35px; text-align: right; padding-right: 12px; padding-bottom: 10px; }
+.chart-area-wrapper { position: relative; flex: 1; height: 100%; }
+.grid-lines { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 10px; }
+.grid-line { width: 100%; height: 1px; border-top: 1px dashed #e2e8f0; }
+.schedule-svg { position: absolute; top: 0; left: 0; width: 100%; height: calc(100% - 10px); overflow: visible; }
+.x-axis-labels { position: absolute; bottom: -10px; left: 0; width: 100%; display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; padding: 0 5px; }
+.data-point { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; }
+.point-badge { background: white; border: 1px solid #dcfce7; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 6px; padding: 4px 8px; display: flex; flex-direction: column; align-items: center; margin-bottom: 4px; line-height: 1.1; z-index: 2; }
+.point-badge strong { font-size: 11px; color: #15803d; }
+.point-badge span { font-size: 8px; color: #64748b; }
+.point-dot { width: 8px; height: 8px; background: #22c55e; border: 2px solid white; border-radius: 50%; box-shadow: 0 0 0 1px #22c55e; z-index: 1; }
+.lighting-preview-panel { padding: 16px; background: white; border: 1px solid #e5e7eb; border-radius: 12px; display: flex; flex-direction: column; }
+.lighting-preview-panel .panel-header { margin-bottom: 12px; }
+.lighting-preview-panel .panel-header h3 { font-size: 13px; }
+.preview-img-container { width: 100%; height: 100%; border-radius: 8px; overflow: hidden; flex: 1; }
+.preview-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================
+   SECTION 3: BOTTOM GRID (Manual | Presets | AI)
+   ========================================= */
+.monitoring-bottom-grid { display: grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap: 16px; }
+
+/* 3A. Manual Adjustment */
+.manual-adjust-panel { padding: 16px; background: white; border: 1px solid #e5e7eb; border-radius: 12px; display: flex; flex-direction: column; }
+.manual-adjust-panel .panel-header { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 16px; }
+.manual-adjust-panel .panel-header h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; margin: 0; }
+.panel-subtext { font-size: 11px; color: #64748b; margin: 0; }
+.manual-controls { display: flex; align-items: center; gap: 16px; flex: 1; }
+.manual-slider-col { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.slider-row { display: flex; align-items: center; gap: 8px; }
+.slider-text { display: flex; flex-direction: column; }
+.slider-text span { font-size: 10px; color: #64748b; }
+.slider-text strong { font-size: 16px; color: #111827; }
+.custom-range { width: 100%; accent-color: #15803d; }
+.duration-row { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #475569; margin-top: 4px; }
+.duration-select { margin-left: auto; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 11px; background: white; outline: none; }
+.manual-divider { width: 1px; height: 80px; background: #e2e8f0; }
+.manual-action-col { padding: 0 8px; }
+.btn-turn-on { background: #0f5132; color: white; border: none; border-radius: 8px; padding: 16px 24px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; transition: 0.2s; }
+.btn-turn-on:hover { background: #166534; }
+.btn-turn-on span { font-size: 12px; font-weight: 600; }
+
+/* 3B. Quick Presets */
+.presets-panel { padding: 16px; background: white; border: 1px solid #e5e7eb; border-radius: 12px; display: flex; flex-direction: column; }
+.presets-panel .panel-header { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 16px; }
+.presets-panel .panel-header h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; margin: 0; }
+.presets-row { display: flex; gap: 8px; flex: 1; }
+.preset-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 4px; cursor: pointer; position: relative; transition: 0.2s; }
+.preset-btn:hover { background: white; border-color: #cbd5e1; }
+.preset-btn strong { font-size: 11px; color: #111827; }
+.preset-btn span { font-size: 9px; color: #64748b; }
+.preset-btn.active { background: #f0fdf4; border-color: #22c55e; box-shadow: inset 0 0 0 1px #22c55e; }
+.preset-btn .check-icon { position: absolute; top: 6px; right: 6px; }
+
+/* 3C. AI Insights */
+.ai-insights-panel { padding: 16px; background: white; border: 1px solid #e5e7eb; border-radius: 12px; display: flex; flex-direction: column; }
+.ai-insights-panel .panel-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.ai-insights-panel .panel-title { display: flex; align-items: center; gap: 8px; }
+.ai-insights-panel h3 { font-size: 15px; margin: 0; }
+.insights-content-box { background: #f0fdf4; border-radius: 8px; padding: 16px; position: relative; overflow: hidden; flex: 1; border: 1px solid #dcfce7; }
+.insights-content-box h4 { font-size: 13px; color: #111827; margin: 0 0 4px 0; position: relative; z-index: 2; }
+.insights-content-box p { font-size: 11px; color: #475569; margin: 0; line-height: 1.4; position: relative; z-index: 2; }
+.insight-bg-icon { position: absolute; bottom: -10px; right: -10px; opacity: 0.2; z-index: 1; }
+
+/* =========================================
+   CONNECTED DEVICES LIST
+   ========================================= */
+.monitor-panel { padding: 16px; background: white; border: 1px solid #e5e7eb; border-radius: 12px; display: flex; flex-direction: column; }
+.monitor-panel .panel-header { margin-bottom: 16px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+.monitor-panel .panel-header h3 { font-size: 14px; margin: 0; }
+.device-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.device-item { display: flex; justify-content: space-between; align-items: center; font-size: 12px; padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+.dev-name { display: flex; align-items: center; gap: 8px; color: #475569; font-weight: 500; }
+.dev-name .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; }
+.dev-status { color: #22c55e; font-weight: 600; font-size: 10px; }
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .monitoring-bottom-layout { grid-template-columns: 1fr; }
+  .monitoring-top-grid { grid-template-columns: 1fr 1fr; }
+  .monitoring-middle-grid { grid-template-columns: 1fr; }
+  .monitoring-bottom-grid { grid-template-columns: 1fr; }
+}
+
+.btn-turn-on.active-off {
+  background: #ef4444; /* Red for Turn Off */
+}
+.btn-turn-on.active-off:hover {
+  background: #dc2626;
+}
+
+.btn-turn-on:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner Animation for Turning On */
+.icon-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Slider styling to match design */
+.custom-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  outline: none;
+}
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #15803d;
+  cursor: pointer;
+}
+.custom-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #15803d;
+  cursor: pointer;
+  border: none;
+}
+
+.panel {
+  background: var(--bg-panel); /* Replaces #ffffff */
+  border: 1px solid var(--border-color); /* Replaces #e5e7eb */
+  color: var(--text-main);
+  /* ... keep your padding, border-radius, etc. ... */
+}
